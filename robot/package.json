@@ -1,0 +1,20 @@
+{
+  "name": "robot-telegram",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm i",
+    "dev": "nodemon ./main.ts",
+    "start": "node ./dist/main.js",
+    "build": "tsc"
+  },
+  "author": "hosein faraj zade jalali",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0",
+    "telegraf": "^4.16.3",
+    "ts-node": "^10.9.2"
+  }
+}
