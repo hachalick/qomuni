@@ -8,6 +8,8 @@ import { CameraLocationEntity } from '../entities/mysql/camera-location.entity';
 import { UserEntity } from '../entities/mysql/user.entity';
 import { TokenUserTelegramEntity } from '../entities/mysql/token-user-telegram.entity';
 import { UserLicensePlatesEntity } from '../entities/mysql/user-license-plates.entity';
+import { UserRoleEntity } from '../entities/mysql/user-role.entity';
+import { RoleEntity } from '../entities/mysql/role.entity';
 
 @Injectable()
 export class TypeOrmDbConfig implements TypeOrmOptionsFactory {
@@ -31,6 +33,8 @@ export class TypeOrmDbConfig implements TypeOrmOptionsFactory {
         UserEntity,
         TokenUserTelegramEntity,
         UserLicensePlatesEntity,
+        UserRoleEntity,
+        RoleEntity
       ],
     };
   }
