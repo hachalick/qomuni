@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ERoleUser } from 'src/modules/common/enum/role.enum';
 import { OtpEntity } from 'src/modules/entities/mysql/otp.entity';
+import { RoleEntity } from 'src/modules/entities/mysql/role.entity';
 import { TokenUserTelegramEntity } from 'src/modules/entities/mysql/token-user-telegram.entity';
+import { UserRoleEntity } from 'src/modules/entities/mysql/user-role.entity';
 import { UserEntity } from 'src/modules/entities/mysql/user.entity';
 import { JwtService } from 'src/modules/jwt/jwt.service';
 import { createOtp } from 'src/modules/utils/createOtp';
@@ -20,6 +23,10 @@ export class AuthService {
     private readonly tokenUserTelegramEntityRepository: Repository<TokenUserTelegramEntity>,
     @InjectRepository(UserEntity)
     private readonly userEntityRepository: Repository<UserEntity>,
+    @InjectRepository(UserRoleEntity)
+    private readonly userRoleEntityRepository: Repository<UserRoleEntity>,
+    @InjectRepository(RoleEntity)
+    private readonly roleRepository: Repository<RoleEntity>,
   ) {}
 
   async sendOtpSms({ mobile }: { mobile: string }) {
@@ -106,9 +113,25 @@ export class AuthService {
     const otpSms = await this.otpRepository.findOneBy({ mobile });
     otpSms.isUsed = true;
     await this.otpRepository.save(otpSms);
+    const roleUser = await this.roleRepository.findOneBy({
+      role: ERoleUser.USER,
+    });
+    const userRole = this.userRoleEntityRepository.create({
+      role: roleUser,
+      user: userSaved,
+    });
+    await this.userRoleEntityRepository.save(userRole);
+    const access_token = await this.jwtService.createAccessToken({
+      num: mobile,
+    });
+    const refresh_token = await this.jwtService.createRefreshToken({
+      num: mobile,
+    });
     return {
       message: 'created account successfully',
       token_telegram: tokenTelegram,
+      access_token,
+      refresh_token,
     };
   }
 
@@ -123,6 +146,7 @@ export class AuthService {
       num: mobile,
     });
     return {
+      message: 'sign in account successfully',
       access_token,
       refresh_token,
     };
@@ -134,6 +158,7 @@ export class AuthService {
     const access_token = await this.jwtService.createAccessToken(arg);
     const refresh_token = await this.jwtService.createRefreshToken(arg);
     return {
+      message: 'refresh token account successfully',
       access_token,
       refresh_token,
     };
