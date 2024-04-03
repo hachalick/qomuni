@@ -1,11 +1,12 @@
-# Sub routes
+# Base sub route
 
 > ***/auth***
 
-## target: send otp sms
+## Route
+
+> ***/programming***
 
 **Method**: POST
-> ***/programming***
 
 ***
 
