@@ -4,9 +4,17 @@
 
 ## Route
 
-> ***/programming***
+> ***/send-otp-sms***
 
-**Method**: POST
+**Method**: POST\
+**Header**: Default\
+**Body**:
+
+```json
+{
+    "mobile": "9XXXXXXXXX"
+}
+```
 
 ***
 
@@ -20,7 +28,9 @@
 **Return**:
 
 ```json
-{ "message": "otp sended" }
+{
+    "message": "otp sended"
+}
 ```
 
 ***
