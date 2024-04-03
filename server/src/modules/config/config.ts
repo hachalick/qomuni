@@ -4,7 +4,13 @@ export enum ConfigKeys {
   App = 'App',
   Db = 'Db',
   Tel = 'Tel',
+  Bu = 'Bu',
 }
+
+const BaseConfig = registerAs(ConfigKeys.Bu, () => ({
+  mobile: 'YOUR MOBILE',
+  password: 'PASSWORD',
+}));
 
 const AppConfig = registerAs(ConfigKeys.App, () => ({
   port: 8080,
@@ -29,4 +35,9 @@ const DbMySqlConfig = registerAs(ConfigKeys.Db, () => ({
   database: 'qomuni',
 }));
 
-export const configurations = [AppConfig, DbMySqlConfig, TelegramConfig];
+export const configurations = [
+  AppConfig,
+  DbMySqlConfig,
+  TelegramConfig,
+  BaseConfig,
+];
