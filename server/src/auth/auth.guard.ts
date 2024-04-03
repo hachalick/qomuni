@@ -31,7 +31,7 @@ export class SendOtpSmsGuard implements CanActivate {
     const request: Request = context.switchToHttp().getRequest();
     const { mobile } = request.body;
     if (!mobile)
-      throw new HttpException('موبایل وجود ندارد', HttpStatus.BAD_REQUEST);
+      throw new HttpException('mobile not existed', HttpStatus.BAD_REQUEST);
     const otp = await this.otpEntityRepository.findOneBy({ mobile });
     if (otp && otp.expires_in > new Date())
       throw new HttpException(
@@ -55,32 +55,32 @@ export class CheckOtpGuard implements CanActivate {
     const request: Request = context.switchToHttp().getRequest();
     const { mobile, otp } = request.body;
     if (!mobile)
-      throw new HttpException('موبایل وجود ندارد', HttpStatus.PAYMENT_REQUIRED);
+      throw new HttpException('mobile not existed', HttpStatus.NOT_FOUND);
     if (!otp)
       throw new HttpException(
-        'کد یکبار مصرف وجود ندارد',
-        HttpStatus.PAYMENT_REQUIRED,
+        'otp not exists',
+        HttpStatus.NOT_FOUND,
       );
     const otpSms = await this.otpEntityRepository.findOneBy({ mobile });
     if (!otpSms) {
       throw new HttpException(
-        'درخواست کد یکبار مصرف داده نشده',
-        HttpStatus.NOT_FOUND,
+        'The request for a otp code was not given',
+        HttpStatus.BAD_REQUEST,
       );
     } else if (otpSms.isUsed) {
       throw new HttpException(
-        'کد یکبار مصرف استفاده شده ',
+        'otp has been used',
         HttpStatus.NOT_FOUND,
       );
     } else if (otpSms.expires_in < new Date()) {
       throw new HttpException(
-        ' زمان کد یکبار مصرف تمام شده',
-        HttpStatus.NOT_FOUND,
+        'otp expired',
+        HttpStatus.GATEWAY_TIMEOUT,
       );
     } else if (otpSms.otp_code !== otp) {
       otpSms.isUsed = true;
       this.otpEntityRepository.save(otpSms);
-      throw new HttpException('کد یکبار مصرف صحیح نیست', HttpStatus.NOT_FOUND);
+      throw new HttpException('otp not correct', HttpStatus.BAD_REQUEST);
     }
     return true;
   }
@@ -97,10 +97,10 @@ export class ExistUserWithMobileGuard implements CanActivate {
     const request: Request = context.switchToHttp().getRequest();
     const { mobile } = request.body;
     if (!mobile)
-      throw new HttpException('موبایل وجود ندارد', HttpStatus.PAYMENT_REQUIRED);
+      throw new HttpException('mobile not existed', HttpStatus.NOT_FOUND);
     const user = await this.userEntityRepository.findOneBy({ mobile });
     if (!user)
-      throw new HttpException('کاربر وجود ندارد', HttpStatus.NOT_FOUND);
+      throw new HttpException('user is not existed', HttpStatus.CONFLICT);
     return true;
   }
 }
@@ -116,9 +116,9 @@ export class NotExistUserWithMobileGuard implements CanActivate {
     const request: Request = context.switchToHttp().getRequest();
     const { mobile } = request.body;
     if (!mobile)
-      throw new HttpException('موبایل وجود ندارد', HttpStatus.PAYMENT_REQUIRED);
+      throw new HttpException('mobile not existed', HttpStatus.NOT_FOUND);
     const user = await this.userEntityRepository.findOneBy({ mobile });
-    if (user) throw new HttpException('کاربر وجود دارد', HttpStatus.NOT_FOUND);
+    if (user) throw new HttpException('user is existed', HttpStatus.CONFLICT);
     return true;
   }
 }
