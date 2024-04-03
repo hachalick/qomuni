@@ -4,7 +4,7 @@
 
 ## Route
 
-> ***/sign-in***
+> ***/refresh-token***
 
 **Method**: PUT\
 **Header**: Default\
