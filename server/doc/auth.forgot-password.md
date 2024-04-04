@@ -28,11 +28,6 @@
 
 ## Accept
 
-**Description**:\
-*when everything is ok and the user account created*\
-\
-**Statues code**: 201\
-\
 **Return**:
 
 ```json
@@ -43,6 +38,11 @@
     "refresh_token": "TOKEN"
 }
 ```
+
+**Description**:\
+*when everything is ok and the user account created*\
+\
+**Statues code**: 201
 
 ***
 
