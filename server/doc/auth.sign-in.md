@@ -26,11 +26,6 @@
 
 ## Accept
 
-**Description**:\
-*when everything is ok and the user account sign in*\
-\
-**Statues code**: 200\
-\
 **Return**:
 
 ```json
@@ -40,6 +35,11 @@
     "refresh_token": "TOKEN"
 }
 ```
+
+**Description**:\
+*when everything is ok and the user account sign in*\
+\
+**Statues code**: 200
 
 ***
 
