@@ -40,26 +40,26 @@ export class ExpAccessTokenGuard implements CanActivate {
     const request: Request = context.switchToHttp().getRequest();
     const access_token = request.headers?.access_token;
     if (!access_token) {
-      throw new HttpException('توکن وجود ندارد', HttpStatus.NOT_FOUND);
+      throw new HttpException('access_token not existed', HttpStatus.NOT_FOUND);
     } else if (typeof access_token === 'string') {
       const splitToken = access_token.split(' ');
       const bearer = splitToken[0];
       const token = splitToken[1];
       if (bearer !== 'Bearer') {
         throw new HttpException(
-          'Bearer توکن ایراد دارد',
+          'Bearer not existed',
           HttpStatus.BAD_REQUEST,
         );
       } else if (!token) {
-        throw new HttpException('توکن کامل نیست', HttpStatus.BAD_REQUEST);
+        throw new HttpException('token not existed', HttpStatus.BAD_REQUEST);
       }
       try {
         await this.jwtService.verifyAccessToken(token);
       } catch (error) {
         if (error.message === EErrorMessageJose.exp)
-          throw new HttpException('توکن منضی شده', HttpStatus.GATEWAY_TIMEOUT);
+          throw new HttpException('token expires', HttpStatus.GATEWAY_TIMEOUT);
         else
-          throw new HttpException('توکن ایراد دارد', HttpStatus.NOT_ACCEPTABLE);
+          throw new HttpException('token is broken', HttpStatus.NOT_ACCEPTABLE);
       }
     }
     return true;
