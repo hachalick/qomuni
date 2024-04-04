@@ -26,11 +26,6 @@
 
 ## Accept
 
-**Description**:\
-*when everything is ok and the token telegram sended*\
-\
-**Statues code**: 200\
-\
 **Return**:
 
 ```json
@@ -39,6 +34,11 @@
     "token_telegram": "TOKEN",
 }
 ```
+
+**Description**:\
+*when everything is ok and the token telegram sended*\
+\
+**Statues code**: 200
 
 ***
 
