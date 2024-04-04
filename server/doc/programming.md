@@ -13,15 +13,15 @@
 
 ## Accept
 
-**Description**:\
-*when everything is ok and the base rows of table is created*\
-\
-**Statues code**: 201\
-\
 **Return**:
 
 ```json
 {
-    "message": "message: rows of table created"
+    "message": "rows of table created"
 }
 ```
+
+**Description**:\
+*when everything is ok and the base rows of table is created*\
+\
+**Statues code**: 201
