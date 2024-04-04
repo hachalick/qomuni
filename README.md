@@ -1,12 +1,17 @@
-## توضیحات
-پروژه نهایی دانشگاه قم در مقطع کارشناسی توسط حسین فرج زاده جلالی و شبنم جلیل پور زده شده و قصد آن کنترل ورود و خروجی وسایل نقلی است که پلاک دارند.\
-هسته اصلی بک اند برنامه توسط نود جی اس با فریمورک نست جی اس زده شده و به صورت موازی از پایتون برای اتصال و ذخیره یک فریم از آی پی دوربین استفاده شده.\
-فرانت اند با ویو زده شده.
+# Title
 
-* برای راه اندازی سرور فرانت اند این پروژه داخل پوشه [client](https://github.com/hachalick/qomuni/tree/main/client) بروید.
-* برای راه اندازی سرور بک اند داخل پوشه [server](https://github.com/hachalick/qomuni/tree/main/server) بروید.
-* برای راه اندازی سرور فیک تشخیص پلاک داخل پوشه [fake-ocr](https://github.com/hachalick/qomuni/tree/main/fake-ocr) بروید.
-* برای راه اندازی سرور ربات تلگرام داخل پوشه [robot](https://github.com/hachalick/qomuni/tree/main/robot) بروید.
+Final project of the University of Qom.
+
+## Description
+
+The final project of the University of Qom at the undergraduate level was created by Hossein Farajzadeh Jalali and Shabnam Jalilpour, and its purpose is to control the entry and exit of vehicles that have license plates.\
+The main back-end core of the program is created by NodeJS with the NestJS framework and Python is used in parallel to connect and save a frame from the IP camera.\
+The front end is made with a wave.
+
+* To start the front-end server of this project, go to the [client](https://github.com/hachalick/qomuni/tree/main/client) folder.
+* Go to the [server](https://github.com/hachalick/qomuni/tree/main/server) folder to start the backend server.
+* Go to the [fake-ocr](https://github.com/hachalick/qomuni/tree/main/fake-ocr) folder to start the fake license plate recognition server.
+* Go to the [robot](https://github.com/hachalick/qomuni/tree/main/robot) folder to start the Telegram robot server.
 
 ## Developer
 
