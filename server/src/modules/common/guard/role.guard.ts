@@ -13,7 +13,7 @@ export class IsAdminGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const role = request.headers.role;
     if (role !== ERoleUser.ADMIN)
-      throw new HttpException('توکن شناسایی نشد', HttpStatus.CONFLICT);
+      throw new HttpException('token not recognized', HttpStatus.FAILED_DEPENDENCY);
     return true;
   }
 }
@@ -24,7 +24,7 @@ export class IsUserGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const role = request.headers.role;
     if (role !== ERoleUser.USER)
-      throw new HttpException('توکن شناسایی نشد', HttpStatus.CONFLICT);
+      throw new HttpException('token not recognized', HttpStatus.FAILED_DEPENDENCY);
     return true;
   }
 }
