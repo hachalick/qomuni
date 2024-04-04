@@ -4,6 +4,8 @@ import {
   Delete,
   Get,
   Headers,
+  HttpCode,
+  HttpStatus,
   Post,
   UseGuards,
 } from '@nestjs/common';
@@ -28,6 +30,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('add-req-license-plate')
+  @HttpCode(HttpStatus.ACCEPTED)
   addLicensePlate(
     @Headers() header: { num: string },
     @Body() licensePlateDto: LicensePlateDto,
@@ -39,12 +42,14 @@ export class UserController {
   }
 
   @Delete('delete-req-license-plate')
+  @HttpCode(HttpStatus.ACCEPTED)
   @UseGuards(ExiLicensePlatesGuard)
   deleteLicensePlate(@Body() uuid: UUIDDto) {
     return this.userService.deleteLicensePlate(uuid);
   }
 
   @Get('access-license-plate-list')
+  @HttpCode(HttpStatus.OK)
   accessLicensePlateList(@Headers() header: { num: string }) {
     return this.userService.accessLicensePlateList({
       number: header.num,
