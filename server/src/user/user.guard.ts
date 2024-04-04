@@ -20,12 +20,12 @@ export class ExiLicensePlatesGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const { uuid } = request.body;
     if (!uuid)
-      throw new HttpException('uuid وجود ندارد', HttpStatus.NOT_FOUND);
+      throw new HttpException('uuid not existed', HttpStatus.NOT_FOUND);
     const licensePlate = await this.userLicensePlatesEntityRepository.find({
       where: { user_license_plates_id: uuid },
     });
     if (!licensePlate.length)
-      throw new HttpException('uuid وجود ندارد', HttpStatus.NOT_FOUND);
+      throw new HttpException('uuid not existed', HttpStatus.NOT_FOUND);
     return true;
   }
 }
