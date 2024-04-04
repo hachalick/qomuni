@@ -3,13 +3,13 @@
 هسته اصلی بک اند برنامه توسط نود جی اس با فریمورک نست جی اس زده شده و به صورت موازی از پایتون برای اتصال و ذخیره یک فریم از آی پی دوربین استفاده شده.\
 فرانت اند با ویو زده شده.\
 \
-برای راه اندازی سرور فرانت اند این پروژه داخل پوشه [client](https://github.com/hachalick/qomuni/tree/main/client) بروید.\
+* برای راه اندازی سرور فرانت اند این پروژه داخل پوشه [client](https://github.com/hachalick/qomuni/tree/main/client) بروید.\
 \
-برای راه اندازی سرور بک اند داخل پوشه [server](https://github.com/hachalick/qomuni/tree/main/server) بروید\
+* برای راه اندازی سرور بک اند داخل پوشه [server](https://github.com/hachalick/qomuni/tree/main/server) بروید\
 \
-برای راه اندازی سرور فیک تشخیص پلاک داخل پوشه [fake-ocr](https://github.com/hachalick/qomuni/tree/main/fake-ocr) بروید.\
+* برای راه اندازی سرور فیک تشخیص پلاک داخل پوشه [fake-ocr](https://github.com/hachalick/qomuni/tree/main/fake-ocr) بروید.\
 \
-برای راه اندازی سرور ربات تلگرام داخل پوشه [robot](https://github.com/hachalick/qomuni/tree/main/robot) بروید.
+* برای راه اندازی سرور ربات تلگرام داخل پوشه [robot](https://github.com/hachalick/qomuni/tree/main/robot) بروید.
 
 ## Developer
 
