@@ -25,6 +25,15 @@ install [mysql](https://www.mysql.com/downloads/) on your device and create sche
 $ npm run initial
 ```
 
+## Init basic rows
+
+run server
+> GET Req to /programming
+
+## Init key
+
+add your key in file [config.ts](https://github.com/hachalick/qomuni/blob/main/server/src/modules/config/config.ts)
+
 ## Running the app
 
 ```bash
