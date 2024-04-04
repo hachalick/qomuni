@@ -20,11 +20,6 @@
 
 ## Accept
 
-**Description**:\
-*when everything is ok and the code is sent*\
-\
-**Statues code**: 201\
-\
 **Return**:
 
 ```json
@@ -33,15 +28,15 @@
 }
 ```
 
+**Description**:\
+*when everything is ok and the code is sent*\
+\
+**Statues code**: 201
+
 ***
 
 ## Error
 
-**Description**:\
-*when the code generation has not expired*\
-\
-**Statues code**: 429\
-\
 **Return**:
 
 ```json
@@ -51,13 +46,13 @@
 }
 ```
 
+**Description**:\
+*when the code generation has not expired*\
+\
+**Statues code**: 429
+
 ***
 
-**Description**:\
-*when there is no mobile field in the body*\
-\
-**Statues code**: 400\
-\
 **Return**:
 
 ```json
@@ -66,3 +61,8 @@
     "message": "mobile not existed"
 }
 ```
+
+**Description**:\
+*when there is no mobile field in the body*\
+\
+**Statues code**: 400
