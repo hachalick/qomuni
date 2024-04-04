@@ -7,7 +7,7 @@ import { ProgrammingService } from './programming.service';
 export class ProgrammingController {
   constructor(private readonly programmingService: ProgrammingService) {}
 
-  @Get('initialization-table')
+  @Get('')
   @HttpCode(HttpStatus.CREATED)
   initializationTable() {
     return this.programmingService.initializationTable();
